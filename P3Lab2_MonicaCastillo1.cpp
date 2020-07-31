@@ -32,15 +32,15 @@ int main(){
             cin >> b;
             cout << "Ingrese el valor de c: ";
             cin >> c;
-            double vertice, izquierda, derecha;
+            double vertice, xizquierda, xderecha;
             int inicio = 0;
             vertice = -b / (2 * a);
-            izquierda = vertice - 200;
-            derecha = vertice + 200;
+            xizquierda = vertice - 200;
+            xderecha = vertice + 200;
             // Ejecucion por la izquierda
-            Polinomio(int a, int b, int c, izquierda, 0);
+            cout << "Raiz encontrada #1: " << Polinomio(a, b, c, inicio, xizquierda) << endl;
             // Ejecucion por la derecha
-            Polinomio(int a, int b, int c, inicio, derecha);
+            cout << "Raiz encontrada #2: " << Polinomio(a, b, c, inicio, xderecha) << endl;
             break; }
         case 2: {
             int tam = 0;
@@ -94,9 +94,9 @@ int main(){
             cout << "Matriz estandarizada:" << endl;
             // Impresion de la Matriz Estandarizada
             for (int i = 0; i < tam; i++){
-                cout << "[";
+                cout << "[ ";
                 for (int j = 0; j < tam; j++){
-                    cout << " " << setw(1) << mestandar[i][j] << " ";
+                    cout << setw(10) << mestandar[i][j] << " ";
                 } // Fin For
                 cout << "]" << endl;
             } // Fin For
@@ -131,6 +131,12 @@ double Sumatoria(int lim, int cont){
     } // Fin If
 } // Fin Sumatoria
 
-double Polinomio(){
-
-}
+double Polinomio(int a, int b, int c, int inicio, double lado){
+    double x;
+    if (inicio == 100){
+        return lado;
+    } else {
+        x = Polinomio(a, b, c, inicio + 1, lado);
+        return x - ((a * pow(x, 2) + (b * x) + c) / ((2 * a * x) + b));
+    } // Fin If
+} // Fin Polinomio

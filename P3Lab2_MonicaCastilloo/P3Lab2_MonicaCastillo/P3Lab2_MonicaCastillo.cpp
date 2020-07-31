@@ -2,7 +2,11 @@
 //
 
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
+int[][] Lectura(int tam);
+void Imprimir(int[][], int tam);
 int main() {
 	char respuesta = 's';
 	while (respuesta == 's') {
@@ -27,3 +31,21 @@ int main() {
 		} // Fin Switch
 	} // Fin While Respuesta
 } // Fin Main
+
+int[][] Lectura(int tam) {
+	int matriz[tam][tam];
+	srand(time(0));
+	for (int i = 0; i < tam; i++) {
+		for (int i = 0; i < tam; i++) {
+			matriz[i][j] << (rand() % 99) + 10;
+		} // Fin For
+	} // Fin For
+} // Fin Lectura
+
+void Imprimir(int matriz[][], int tam) {
+	for (int i = 0; i < tam; i++) {
+		for (int i = 0; i < tam; i++) {
+			cout << matriz[i][j];
+		} // Fin For
+	} // Fin For
+}

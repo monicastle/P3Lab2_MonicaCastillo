@@ -19,6 +19,7 @@ int main(){
         cin >> opcion;
         switch (opcion){
         case 1:{
+            // Aqui va el Ejercicio #1
             int a, b, c;
             cout << "Se ingresara un polinomio de la siguiente forma: ax^2 + bx + c" << endl;
             cout << "Ingrese el valor de a: ";
@@ -34,15 +35,19 @@ int main(){
             cin >> c;
             double vertice, xizquierda, xderecha;
             int inicio = 0;
+            // Se calcula el Vertice del polinomio:
             vertice = -b / (2 * a);
+            // Se le suma a dicho vertice 200 por la derecha y 
+            // se le resta 200 por la izquierda 
             xizquierda = vertice - 200;
             xderecha = vertice + 200;
-            // Ejecucion por la izquierda
-            cout << "Raiz encontrada #1: " << Polinomio(a, b, c, inicio, xizquierda) << endl;
             // Ejecucion por la derecha
-            cout << "Raiz encontrada #2: " << Polinomio(a, b, c, inicio, xderecha) << endl;
+            cout << "Raiz encontrada #1: " << Polinomio(a, b, c, inicio, xderecha) << endl;
+            // Ejecucion por la izquierda
+            cout << "Raiz encontrada #2: " << Polinomio(a, b, c, inicio, xizquierda) << endl;
             break; }
         case 2: {
+            // Aqui va el Ejercicio #2
             int tam = 0;
             cout << "Ingrese el tamano de la matriz: ";
             cin >> tam;
@@ -53,16 +58,18 @@ int main(){
             } // Fin While Validacion         
             int matriz[tam][tam];
             srand(time(0));
+            // Genera la matriz con numero random
             for (int i = 0; i < tam; i++){
                 for (int j = 0; j < tam; j++){
                     matriz[i][j] = (rand() % 89) + 10;
                 } // Fin For
             } // Fin For
+            // Imprime la matriz generada
             cout << "Matriz generada:" << endl;
             for (int i = 0; i < tam; i++){
                 cout << "[";
                 for (int j = 0; j < tam; j++){
-                    cout << " " << setw(3) << matriz[i][j];
+                    cout << " " << setw(2) << matriz[i][j];
                 } // Fin For
                 cout << "]" << endl;
             } // Fin For
@@ -85,7 +92,7 @@ int main(){
             } // Fin For
             result = acumdes / (tam * tam);
             desv = sqrt(result);
-            // Obtener los la matriz estandarizada
+            // Obtener los valores de la matriz estandarizada
             for (int m = 0; m < tam; m++){                
                 for (int c = 0; c < tam; c++){                  
                     mestandar[m][c] = (matriz[m][c] - media) / desv;
@@ -94,14 +101,15 @@ int main(){
             cout << "Matriz estandarizada:" << endl;
             // Impresion de la Matriz Estandarizada
             for (int i = 0; i < tam; i++){
-                cout << "[ ";
+                cout << "[";
                 for (int j = 0; j < tam; j++){
-                    cout << setw(10) << mestandar[i][j] << " ";
+                    cout << setw(11) << mestandar[i][j] << " ";
                 } // Fin For
                 cout << "]" << endl;
             } // Fin For
             break; }
         case 3:{
+            // Aqui va el Ejercicio #3
             int limite = 0, cont = 0;
             double sumatoria;
             cout << "Ingrese el limite de la sumatoria: ";
@@ -111,10 +119,12 @@ int main(){
                 cout << "Ingrese el limite de la sumatoria: ";
                 cin >> limite;
             } // Fin While Validacion  
+            // Calcula la aproximacion de pi
             sumatoria = 4 * Sumatoria(limite, cont); 
             cout << "Pi es igual a: " << sumatoria << endl;
             break; }
         case 4:{
+            // Aqui va la Salida
             respuesta = 'n';
             break; }
         default:
@@ -123,6 +133,8 @@ int main(){
     } // Fin While Respuesta
 } // Fin Main
 
+// Metodo que calcula la aproximacion de pi, sumandole al contador 1 en cada vuelta
+// para que se vaya acumulando cada suma
 double Sumatoria(int lim, int cont){
     if (lim == cont){
         return 0;
@@ -131,6 +143,8 @@ double Sumatoria(int lim, int cont){
     } // Fin If
 } // Fin Sumatoria
 
+// Metodo que obtiene las raices de un polinomio, ya sea por la izquierda o derecha
+// Iterará 100 veces y se ira restando la funcion a la anterior
 double Polinomio(int a, int b, int c, int inicio, double lado){
     double x;
     if (inicio == 100){
